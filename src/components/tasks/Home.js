@@ -6,27 +6,27 @@ import firebase from './Firebase';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('boards');
+    this.ref = firebase.firestore().collection('task');
     this.unsubscribe = null;
     this.state = {
-      boards: []
+      tasks: []
     };
   }
 
   onCollectionUpdate = (querySnapshot) => {
-    const boards = [];
+    const tasks = [];
     querySnapshot.forEach((doc) => {
-      const { title, description, author } = doc.data();
-      boards.push({
+      const { task, resolve, resolve_date } = doc.data();
+      tasks.push({
         key: doc.id,
         doc, // DocumentSnapshot
-        title,
-        description,
-        author,
+        task,
+        resolve,
+        resolve_date,
       });
     });
     this.setState({
-      boards
+      tasks
    });
   }
 
@@ -40,25 +40,25 @@ class App extends Component {
       <div class="card">
         <div class="card-header">
           <h6>
-            BOARD LIST
+            TASK LIST
           </h6>
         </div>
         <div class="card-body">
-          <h4><Link class="btn btn-primary" to="/create">Add Board</Link></h4>
+          <h4><Link class="btn btn-primary" to="/create">Add Task</Link></h4>
           <table class="table table-stripe">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Author</th>
+                <th>Task</th>
+                <th>Resolve</th>
+                <th>Resolve Date</th>
               </tr>
             </thead>
             <tbody>
-              {this.state.boards.map(board =>
+              {this.state.tasks.map(tasks =>
                 <tr>
-                  <td><Link to={`/show/${board.key}`}>{board.title}</Link></td>
-                  <td>{board.description}</td>
-                  <td>{board.author}</td>
+                  <td><Link to={`/show/${tasks.key}`}>{tasks.task}</Link></td>
+                  <td>{tasks.resolve}</td>
+                  <td>{tasks.resolve_date}</td>
                 </tr>
               )}
             </tbody>

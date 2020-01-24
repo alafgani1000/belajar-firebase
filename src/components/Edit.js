@@ -64,13 +64,13 @@ class Edit extends Component {
   render() {
     return (
       <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <div class="card">
+          <div class="card-header">
             <h3 class="panel-title">
               EDIT BOARD
             </h3>
           </div>
-          <div class="panel-body">
+          <div class="card-body">
             <h4><Link to={`/show/${this.state.key}`} class="btn btn-primary">Board List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">

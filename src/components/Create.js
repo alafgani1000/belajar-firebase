@@ -46,13 +46,13 @@ class Create extends Component {
     const { title, description, author } = this.state;
     return (
       <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+        <div class="card">
+          <div class="card-header">
+            <h6>
               ADD BOARD
-            </h3>
+            </h6>
           </div>
-          <div class="panel-body">
+          <div class="card-body">
             <h4><Link to="/" class="btn btn-primary">Book List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">

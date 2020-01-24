@@ -39,14 +39,14 @@ class Show extends Component {
   render() {
     return (
       <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
+        <div class="card">
+          <div class="card-header">
           <h4><Link to="/">Board List</Link></h4>
-            <h3 class="panel-title">
+            <h6>
               {this.state.board.title}
-            </h3>
+            </h6>
           </div>
-          <div class="panel-body">
+          <div class="card-body">
             <dl>
               <dt>Description:</dt>
               <dd>{this.state.board.description}</dd>
